@@ -1,4 +1,6 @@
+#Aayog Koirala 
 #Rock, Paper, Scissors, Lizard, Spock
+
 import random,os
 def main():
     global opt,msg
