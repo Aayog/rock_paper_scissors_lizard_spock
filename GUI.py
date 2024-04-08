@@ -5,18 +5,19 @@ import tkinter as tk
 from RockPaperScissor import RockPaperScissorsLizardSpock
 
 class GUIInterface(RockPaperScissorsLizardSpock):
-    def __init__(self, master):
+    def __init__(self):
         super().__init__()
-        self.master = master
-        master.title("Rock, Paper, Scissors, Lizard, Spock")
+        self.master = tk.Tk()
+        self.master.geometry("400x400")
+        self.master.title("Rock, Paper, Scissors, Lizard, Spock")
 
         self.user_choice = tk.StringVar()
         self.user_choice.set("Choose your option")
 
-        options_menu = tk.OptionMenu(master, self.user_choice, *self.options)
+        options_menu = tk.OptionMenu(self.master, self.user_choice, *self.options)
         options_menu.pack()
 
-        play_button = tk.Button(master, text="Play", command=self.play_game)
+        play_button = tk.Button(self.master, text="Play", command=self.play_game)
         play_button.pack()
 
     def get_user_choice(self):
@@ -38,7 +39,5 @@ class GUIInterface(RockPaperScissorsLizardSpock):
             else:
                 result_msg += f"{result} wins! {message}"
             messagebox.showinfo("Result", result_msg)
-
-root = tk.Tk()
-gui_game = GUIInterface(root)
-root.mainloop()
+    def play(self):
+        self.master.mainloop()
